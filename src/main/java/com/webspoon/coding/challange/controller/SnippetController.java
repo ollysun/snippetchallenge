@@ -22,18 +22,17 @@ import com.webspoon.coding.challange.model.request.SnippetUpdateModel;
 import com.webspoon.coding.challange.services.SnippetService;
 
 @RestController
-@RequestMapping("/snippet")
 public class SnippetController {
 
 	@Autowired
 	SnippetService snippetService;
 
-  @GetMapping("/")
+    @GetMapping("/")
 	public String defaultMessage() {
 		return "Welcome to the Spring Boot Application Starter!";
 	}
 
-	@PostMapping
+	@PostMapping("/snippet")
 	public ResponseEntity<Snippet> createSnippet(@Valid @RequestBody SnippetRequestModel snippetRequestModel,
 			HttpServletRequest request) {
 		Snippet returnValue = snippetService.createSnippet(snippetRequestModel, request);
@@ -41,7 +40,7 @@ public class SnippetController {
 
 	}
 
-	@PutMapping
+	@PutMapping("/snippet")
 	public ResponseEntity<Snippet> updateSnippet(@Valid @RequestBody SnippetUpdateModel snippetUpdateModel) {
 
 		if (snippetService.updateSnippet(snippetUpdateModel) == null) {
@@ -52,7 +51,7 @@ public class SnippetController {
 
 	}
 
-	@GetMapping
+	@GetMapping("/snippet")
 	public ResponseEntity<List<Snippet>> getSnippet() {
 		if (snippetService.getSnippet().isEmpty()) {
 			throw new SnippetException("Empty List");
