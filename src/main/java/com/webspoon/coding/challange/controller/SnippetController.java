@@ -52,9 +52,9 @@ public class SnippetController {
 	}
 
 	@GetMapping("/snippet")
-	public ResponseEntity<List<Snippet>> getSnippet() {
-		if (snippetService.getSnippet().isEmpty()) {
-			throw new SnippetException("Empty List");
+	public ResponseEntity<Snippet> getSnippet() {
+		if (snippetService == null) {
+			throw new SnippetException("Empty");
 		}
 		return new ResponseEntity<>(snippetService.getSnippet(), HttpStatus.OK);
 	}

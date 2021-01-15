@@ -1,10 +1,7 @@
 package com.webspoon.coding.challange.services;
 
-import java.sql.Timestamp;
 import java.util.ArrayList;
-import java.util.Calendar;
 import java.util.Collections;
-import java.util.Date;
 import java.util.Iterator;
 import java.util.List;
 
@@ -68,12 +65,13 @@ public class SnippetServiceImpl implements SnippetService{
 	}
 
 	@Override
-	public List<Snippet> getSnippet() {
+	public Snippet getSnippet() {
 		if (snippetList.isEmpty()) {
-			return Collections.emptyList();
+			return null;
 		}
 
 		List<Snippet> output = new ArrayList<>();
+		Snippet out2 = new Snippet();
 		for (Snippet snippet : snippetList) {
 			int timedifference = util.checkSecondDifference(snippet.getExpires_at());
 			if (timedifference > 60) {
@@ -82,7 +80,7 @@ public class SnippetServiceImpl implements SnippetService{
 			output.add(snippet);
 		}
 
-		return output;
+		return output.get(0);
 	}
 
 

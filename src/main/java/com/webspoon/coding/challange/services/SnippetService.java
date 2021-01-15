@@ -5,7 +5,6 @@ import com.webspoon.coding.challange.model.request.SnippetRequestModel;
 import com.webspoon.coding.challange.model.request.SnippetUpdateModel;
 
 import javax.servlet.http.HttpServletRequest;
-import java.util.List;
 
 public interface SnippetService {
 
@@ -13,5 +12,5 @@ public interface SnippetService {
 
     Snippet updateSnippet(SnippetUpdateModel snippetUpdateModel);
 
-    List<Snippet> getSnippet();
+    Snippet getSnippet();
 }
