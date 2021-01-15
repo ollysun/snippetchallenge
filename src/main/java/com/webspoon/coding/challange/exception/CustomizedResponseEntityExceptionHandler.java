@@ -40,7 +40,7 @@ public class CustomizedResponseEntityExceptionHandler extends ResponseEntityExce
     @ExceptionHandler({SnippetException.class})
     public final ResponseEntity<Object> handleAllExceptions(Exception ex, WebRequest request) {
         final ExceptionResponse exceptionResponse = new ExceptionResponse(
-                HttpStatus.UNPROCESSABLE_ENTITY,
+                HttpStatus.NOT_FOUND,
         new Date(),
                 ex.getMessage(),
                 "error occurred");
