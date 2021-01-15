@@ -1,0 +1,2 @@
+language = "bash"
+run="mvn package && java -jar target/WebSpoonCodingChallenge-0.0.1-SNAPSHOT.jar"
