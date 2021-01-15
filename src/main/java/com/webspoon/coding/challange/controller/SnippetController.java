@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import com.webspoon.coding.challange.exception.SnippetException;
+import com.webspoon.coding.challange.services.SnippetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -13,13 +14,12 @@ import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PostMapping;
 import org.springframework.web.bind.annotation.PutMapping;
 import org.springframework.web.bind.annotation.RequestBody;
-import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
 import com.webspoon.coding.challange.model.Snippet;
 import com.webspoon.coding.challange.model.request.SnippetRequestModel;
 import com.webspoon.coding.challange.model.request.SnippetUpdateModel;
-import com.webspoon.coding.challange.services.SnippetService;
+import com.webspoon.coding.challange.services.SnippetServiceImpl;
 
 @RestController
 public class SnippetController {

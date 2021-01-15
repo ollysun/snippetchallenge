@@ -1,90 +1,17 @@
 package com.webspoon.coding.challange.services;
 
-import java.sql.Timestamp;
-import java.util.ArrayList;
-import java.util.Calendar;
-import java.util.Collections;
-import java.util.Date;
-import java.util.Iterator;
-import java.util.List;
-
-import javax.servlet.http.HttpServletRequest;
-
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.stereotype.Service;
-
 import com.webspoon.coding.challange.model.Snippet;
 import com.webspoon.coding.challange.model.request.SnippetRequestModel;
 import com.webspoon.coding.challange.model.request.SnippetUpdateModel;
 
-import lombok.extern.java.Log;
+import javax.servlet.http.HttpServletRequest;
+import java.util.List;
 
-@Log
-@Service
-public class SnippetService {
+public interface SnippetService {
 
-	@Autowired
-	private Util util;
+    Snippet createSnippet(SnippetRequestModel snippetRequestModel, HttpServletRequest request);
 
-	private static List<Snippet> snippetList = new ArrayList<>();
+    Snippet updateSnippet(SnippetUpdateModel snippetUpdateModel);
 
-	public Snippet createSnippet(SnippetRequestModel snippetRequestModel, HttpServletRequest request) {
-
-		Snippet snippet = new Snippet();
-		snippet.setName(snippetRequestModel.getName());
-		snippet.setSnippetString(snippetRequestModel.getSnippet());
-		snippet.setExpires_at(util.addedSeconds(snippetRequestModel.getExpires_in()));
-		snippet.setUrl(request.getRequestURL().toString());
-		snippet.setPassword(snippetRequestModel.getPassword());
-
-		snippetList.add(snippet);
-
-		return snippet;
-
-	}
-
-	public Snippet updateSnippet(SnippetUpdateModel snippetUpdateModel) {
-		if (snippetList.isEmpty()) {
-			return (Snippet) Collections.emptyList();
-		}
-
-		Snippet snippet = new Snippet();
-
-		Iterator<Snippet> iterator = snippetList.iterator();
-		while (iterator.hasNext()) {
-			Snippet snippetIterate = iterator.next();
-			if (snippetIterate.getPassword().equals(snippetUpdateModel.getPassword())) {
-				snippet.setSnippetString(snippetUpdateModel.getSnippet());
-				snippet.setPassword(snippetUpdateModel.getPassword());
-				snippet.setExpires_at(util.checkTime(snippetUpdateModel.getExpires_In()));
-				snippet.setName(snippetIterate.getName());
-				snippet.setUrl(snippetIterate.getUrl());
-			}
-		}
-
-		return snippet;
-	}
-
-	public List<Snippet> getSnippet() {
-		if (snippetList.isEmpty()) {
-			return Collections.emptyList();
-		}
-
-		List<Snippet> output = new ArrayList<>();
-		for (Snippet snippet : snippetList) {
-			int timedifference = util.checkSecondDifference(snippet.getExpires_at());
-			if (timedifference > 60) {
-				snippetList.remove(snippet);
-			}
-			output.add(snippet);
-		}
-
-		return output;
-	}
-
-
-
-
-
-
+    List<Snippet> getSnippet();
 }
