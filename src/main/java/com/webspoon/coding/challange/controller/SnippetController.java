@@ -27,6 +27,11 @@ public class SnippetController {
 	@Autowired
 	SnippetService snippetService;
 
+  @GetMapping("/")
+	public String defaultMessage() {
+		return "Welcome to the Spring Boot Application Starter!";
+	}
+
 	@PostMapping
 	public ResponseEntity<Snippet> createSnippet(@Valid @RequestBody SnippetRequestModel snippetRequestModel,
 			HttpServletRequest request) {
