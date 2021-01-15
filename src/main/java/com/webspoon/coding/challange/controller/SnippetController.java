@@ -5,6 +5,7 @@ import java.util.List;
 import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
+import com.webspoon.coding.challange.exception.SnippetException;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
 import org.springframework.http.ResponseEntity;
@@ -44,7 +45,7 @@ public class SnippetController {
 	public ResponseEntity<Snippet> updateSnippet(@Valid @RequestBody SnippetUpdateModel snippetUpdateModel) {
 
 		if (snippetService.updateSnippet(snippetUpdateModel) == null) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			throw new SnippetException("Empty List");
 		}
 
 		return new ResponseEntity<>(snippetService.updateSnippet(snippetUpdateModel), HttpStatus.OK);
@@ -54,7 +55,7 @@ public class SnippetController {
 	@GetMapping
 	public ResponseEntity<List<Snippet>> getSnippet() {
 		if (snippetService.getSnippet().isEmpty()) {
-			return new ResponseEntity<>(HttpStatus.NOT_FOUND);
+			throw new SnippetException("Empty List");
 		}
 		return new ResponseEntity<>(snippetService.getSnippet(), HttpStatus.OK);
 	}
