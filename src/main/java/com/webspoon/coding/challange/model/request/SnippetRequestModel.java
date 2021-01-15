@@ -18,6 +18,7 @@ public class SnippetRequestModel implements Serializable {
 	@NotNull(message = "please provide the expiring time in seconds")
 	private Integer expires_in;
 
+	@NotNull(message = "please provide the snippet")
 	private String snippet;
 
 	private String password;

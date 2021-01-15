@@ -1,9 +1,13 @@
 package com.webspoon.coding.challange.model.request;
 
-public class SnippetUpdateModel {
+import javax.validation.constraints.NotEmpty;
+import java.io.Serializable;
+
+public class SnippetUpdateModel implements Serializable {
 
 	private String snippet;
 
+	@NotEmpty(message = "Please provide the password for editing")
 	private String password;
 
 	private Integer expires_In;
