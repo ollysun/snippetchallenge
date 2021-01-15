@@ -59,7 +59,7 @@ Response
 }
 
 
-# To Get the list of snippet
+# To Get the  snippet
 GET https://snippetchallenge.mosesone.repl.co/snippet
 
 
