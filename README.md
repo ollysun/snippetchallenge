@@ -37,6 +37,7 @@ The base project has three endpoints you can build on. They are all defined in t
 - `GET /snippet` - a GET endpoint  String parameter and returns a JSON `Snippet` object
 - `POST /snnippet` - a POST endpoint that takes a JSON body of the `Person` object with a name, and returns a JSON `Snippet` object
 
+- `PUT /snnippet` - a PUT endpoint that takes a JSON body of the `Person` object with a name, and returns a JSON `Snippet` object
 
 # To store snippet, use this payload
 local setup running -- http://localhost:8081/snippet
