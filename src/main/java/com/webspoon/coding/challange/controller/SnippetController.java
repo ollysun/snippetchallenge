@@ -6,6 +6,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.validation.Valid;
 
 import com.webspoon.coding.challange.exception.SnippetException;
+import com.webspoon.coding.challange.services.RequestURL;
 import com.webspoon.coding.challange.services.SnippetService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpStatus;
@@ -34,7 +35,7 @@ public class SnippetController {
 
 	@PostMapping("/snippet")
 	public ResponseEntity<Snippet> createSnippet(@Valid @RequestBody SnippetRequestModel snippetRequestModel,
-			HttpServletRequest request) {
+												 @RequestURL String  request) {
 		Snippet returnValue = snippetService.createSnippet(snippetRequestModel, request);
 		return new ResponseEntity<>(returnValue, HttpStatus.CREATED);
 

@@ -26,13 +26,13 @@ public class SnippetServiceImpl implements SnippetService{
 	private static List<Snippet> snippetList = new ArrayList<>();
 
 	@Override
-	public Snippet createSnippet(SnippetRequestModel snippetRequestModel, HttpServletRequest request) {
+	public Snippet createSnippet(SnippetRequestModel snippetRequestModel, String request) {
 
 		Snippet snippet = new Snippet();
 		snippet.setName(snippetRequestModel.getName());
 		snippet.setSnippetString(snippetRequestModel.getSnippet());
 		snippet.setExpires_at(util.addedSeconds(snippetRequestModel.getExpires_in()));
-		snippet.setUrl(request.getRequestURL().toString());
+		snippet.setUrl(request);
 		snippet.setPassword(snippetRequestModel.getPassword());
 
 		snippetList.add(snippet);

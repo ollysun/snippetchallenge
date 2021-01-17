@@ -8,7 +8,7 @@ import javax.servlet.http.HttpServletRequest;
 
 public interface SnippetService {
 
-    Snippet createSnippet(SnippetRequestModel snippetRequestModel, HttpServletRequest request);
+    Snippet createSnippet(SnippetRequestModel snippetRequestModel, String request);
 
     Snippet updateSnippet(SnippetUpdateModel snippetUpdateModel);
 
